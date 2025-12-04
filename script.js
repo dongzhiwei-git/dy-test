@@ -6,14 +6,14 @@ let voiceTimer = null;
 let mediaRecorder = null;
 let audioChunks = [];
 
-// 默认头像（使用渐变色作为默认头像）
+// 默认头像（使用抖音风格渐变色作为默认头像）
 const defaultAvatars = {
-    left: generateDefaultAvatar('#4A90E2'),
-    right: generateDefaultAvatar('#95EC69')
+    left: generateDefaultAvatar('#667eea', '#764ba2'),
+    right: generateDefaultAvatar('#4A9FF5', '#5B7EF6')
 };
 
 // 生成默认头像
-function generateDefaultAvatar(color) {
+function generateDefaultAvatar(color1, color2) {
     const canvas = document.createElement('canvas');
     canvas.width = 100;
     canvas.height = 100;
@@ -21,11 +21,15 @@ function generateDefaultAvatar(color) {
     
     // 创建渐变
     const gradient = ctx.createLinearGradient(0, 0, 100, 100);
-    gradient.addColorStop(0, color);
-    gradient.addColorStop(1, adjustColor(color, -30));
+    gradient.addColorStop(0, color1);
+    gradient.addColorStop(1, color2);
     
     ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 100, 100);
+    
+    // 绘制圆形
+    ctx.beginPath();
+    ctx.arc(50, 50, 50, 0, Math.PI * 2);
+    ctx.fill();
     
     return canvas.toDataURL();
 }
@@ -44,8 +48,23 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAvatars();
     initializeEmojiPicker();
     initializeEventListeners();
+    updateStatusBarTime();
     scrollToBottom();
+    
+    // 每分钟更新一次状态栏时间
+    setInterval(updateStatusBarTime, 60000);
 });
+
+// 更新状态栏时间
+function updateStatusBarTime() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const timeElement = document.querySelector('.status-bar .time');
+    if (timeElement) {
+        timeElement.textContent = `${hours}:${minutes}`;
+    }
+}
 
 // 初始化头像
 function initializeAvatars() {
@@ -431,23 +450,29 @@ function scrollToBottom() {
 // 显示通知
 function showNotification(message) {
     const notification = document.createElement('div');
-    notification.className = 'system-text';
     notification.textContent = message;
     notification.style.position = 'fixed';
-    notification.style.top = '80px';
+    notification.style.top = '120px';
     notification.style.left = '50%';
     notification.style.transform = 'translateX(-50%)';
     notification.style.zIndex = '1000';
-    notification.style.padding = '10px 20px';
-    notification.style.background = 'rgba(0, 0, 0, 0.7)';
+    notification.style.padding = '12px 24px';
+    notification.style.background = 'rgba(22, 24, 35, 0.95)';
     notification.style.color = '#fff';
-    notification.style.borderRadius = '20px';
+    notification.style.borderRadius = '24px';
+    notification.style.fontSize = '14px';
+    notification.style.fontWeight = '500';
+    notification.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.2)';
+    notification.style.backdropFilter = 'blur(10px)';
     
     document.body.appendChild(notification);
     
     setTimeout(() => {
-        notification.remove();
-    }, 2000);
+        notification.style.transition = 'opacity 0.3s, transform 0.3s';
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(-50%) translateY(-10px)';
+        setTimeout(() => notification.remove(), 300);
+    }, 1800);
 }
 
 // 点击外部关闭面板
