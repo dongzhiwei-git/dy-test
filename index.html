@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>微信聊天</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 聊天界面容器 -->
+    <div class="chat-container">
+        <!-- 顶部导航栏 -->
+        <div class="header">
+            <div class="header-left">
+                <button class="back-btn">
+                    <svg width="11" height="18" viewBox="0 0 11 18" fill="none">
+                        <path d="M9.5 1.5L1.5 9L9.5 16.5" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <span class="unread-count">2</span>
+            </div>
+            <div class="header-center">
+                <img src="https://via.placeholder.com/40" alt="头像" class="header-avatar" id="headerAvatar">
+                <span class="chat-name" id="chatName">快乐的烤红薯</span>
+            </div>
+            <div class="header-right">
+                <button class="icon-btn video-btn">
+                    <svg width="28" height="22" viewBox="0 0 28 22" fill="none">
+                        <rect x="1" y="3" width="18" height="16" rx="2.5" stroke="#000000" stroke-width="2"/>
+                        <path d="M19 8.5L26 4.5V17.5L19 13.5V8.5Z" fill="#000000"/>
+                    </svg>
+                </button>
+                <button class="icon-btn more-btn">
+                    <svg width="4" height="18" viewBox="0 0 4 18" fill="none">
+                        <circle cx="2" cy="2" r="2" fill="#000000"/>
+                        <circle cx="2" cy="9" r="2" fill="#000000"/>
+                        <circle cx="2" cy="16" r="2" fill="#000000"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 聊天消息区域 -->
+        <div class="messages-container" id="messagesContainer">
+            <!-- 时间显示 -->
+            <div class="message-time">21:07</div>
+            
+            <!-- 系统消息 -->
+            <div class="system-message">你们已互相关注对方</div>
+        </div>
+
+        <!-- 底部输入区域 -->
+        <div class="footer">
+            <!-- 快捷表情栏 -->
+            <div class="quick-reactions" id="quickReactions">
+                <button class="reaction-btn" data-emoji="👋">👋 晚上好</button>
+                <button class="reaction-btn" data-emoji="🫰">🫰 比个心</button>
+                <button class="reaction-btn" data-emoji="👍">👍 赞</button>
+                <button class="reaction-btn" data-emoji="🤣">🤣 捂脸</button>
+                <button class="reaction-btn" data-emoji="🌹">🌹 玫瑰</button>
+            </div>
+
+            <!-- 输入栏 -->
+            <div class="input-bar">
+                <button class="input-icon-btn grid-btn">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <rect x="1" y="1" width="8" height="8" rx="1.5" fill="#5A5A5A"/>
+                        <rect x="13" y="1" width="8" height="8" rx="1.5" fill="#5A5A5A"/>
+                        <rect x="1" y="13" width="8" height="8" rx="1.5" fill="#5A5A5A"/>
+                        <rect x="13" y="13" width="8" height="8" rx="1.5" fill="#5A5A5A"/>
+                    </svg>
+                </button>
+                <div class="input-wrapper">
+                    <input type="text" class="message-input" id="messageInput" placeholder="发送消息">
+                </div>
+                <button class="input-icon-btn voice-btn" id="voiceBtn">
+                    <svg width="22" height="26" viewBox="0 0 22 26" fill="none">
+                        <rect x="6" y="1" width="10" height="14" rx="5" stroke="#5A5A5A" stroke-width="2"/>
+                        <path d="M1 13C1 13 1 17 11 17C21 17 21 13 21 13" stroke="#5A5A5A" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="11" y1="17" x2="11" y2="22" stroke="#5A5A5A" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="6" y1="22" x2="16" y2="22" stroke="#5A5A5A" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <button class="input-icon-btn emoji-btn" id="emojiBtn">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                        <circle cx="13" cy="13" r="11.5" stroke="#5A5A5A" stroke-width="2"/>
+                        <circle cx="9" cy="11" r="1.5" fill="#5A5A5A"/>
+                        <circle cx="17" cy="11" r="1.5" fill="#5A5A5A"/>
+                        <path d="M8 15.5C8 15.5 9.5 18 13 18C16.5 18 18 15.5 18 15.5" stroke="#5A5A5A" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <button class="input-icon-btn plus-btn" id="plusBtn">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                        <circle cx="13" cy="13" r="11.5" stroke="#5A5A5A" stroke-width="2"/>
+                        <line x1="13" y1="7" x2="13" y2="19" stroke="#5A5A5A" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="7" y1="13" x2="19" y2="13" stroke="#5A5A5A" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加号菜单面板 -->
+    <div class="plus-menu" id="plusMenu">
+        <button class="menu-item" id="photoBtn">
+            <div class="menu-icon photo-icon">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect x="4" y="4" width="24" height="24" rx="3" stroke="white" stroke-width="2.5"/>
+                    <circle cx="11" cy="11" r="2.5" fill="white"/>
+                    <path d="M28 20L20 12L4 28" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <span>照片</span>
+        </button>
+        <button class="menu-item" id="cameraBtn">
+            <div class="menu-icon camera-icon">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect x="3" y="8" width="26" height="20" rx="3" stroke="white" stroke-width="2.5"/>
+                    <circle cx="16" cy="18" r="5" stroke="white" stroke-width="2.5"/>
+                    <path d="M10 8L12 4H20L22 8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <span>拍摄</span>
+        </button>
+        <button class="menu-item" id="changeAvatarBtn">
+            <div class="menu-icon avatar-icon">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="13" stroke="white" stroke-width="2.5"/>
+                    <circle cx="16" cy="13" r="4.5" stroke="white" stroke-width="2.5"/>
+                    <path d="M7 27C7 22 10 19 16 19C22 19 25 22 25 27" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <span>修改头像</span>
+        </button>
+        <button class="menu-item" id="changeNameBtn">
+            <div class="menu-icon name-icon">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M6 10H26M6 16H26M6 22H18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <span>修改名字</span>
+        </button>
+    </div>
+
+    <!-- 语音录制面板 -->
+    <div class="voice-panel" id="voicePanel">
+        <div class="voice-wave">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+        </div>
+        <p class="voice-tip">正在录音...</p>
+        <p class="voice-time" id="voiceTime">00:00</p>
+        <button class="voice-cancel" id="voiceCancel">取消</button>
+        <button class="voice-send" id="voiceSend">发送</button>
+    </div>
+
+    <!-- 表情面板 -->
+    <div class="emoji-panel" id="emojiPanel">
+        <div class="emoji-grid">
+            <button class="emoji-item">😀</button>
+            <button class="emoji-item">😃</button>
+            <button class="emoji-item">😄</button>
+            <button class="emoji-item">😁</button>
+            <button class="emoji-item">😆</button>
+            <button class="emoji-item">😅</button>
+            <button class="emoji-item">🤣</button>
+            <button class="emoji-item">😂</button>
+            <button class="emoji-item">🙂</button>
+            <button class="emoji-item">😊</button>
+            <button class="emoji-item">😇</button>
+            <button class="emoji-item">🥰</button>
+            <button class="emoji-item">😍</button>
+            <button class="emoji-item">🤩</button>
+            <button class="emoji-item">😘</button>
+            <button class="emoji-item">😗</button>
+            <button class="emoji-item">😙</button>
+            <button class="emoji-item">😚</button>
+            <button class="emoji-item">👋</button>
+            <button class="emoji-item">🤚</button>
+            <button class="emoji-item">✋</button>
+            <button class="emoji-item">👍</button>
+            <button class="emoji-item">👎</button>
+            <button class="emoji-item">👏</button>
+            <button class="emoji-item">🙏</button>
+            <button class="emoji-item">💪</button>
+            <button class="emoji-item">❤️</button>
+            <button class="emoji-item">🧡</button>
+            <button class="emoji-item">💛</button>
+            <button class="emoji-item">💚</button>
+            <button class="emoji-item">💙</button>
+            <button class="emoji-item">💜</button>
+            <button class="emoji-item">🌹</button>
+            <button class="emoji-item">🌸</button>
+            <button class="emoji-item">🌺</button>
+            <button class="emoji-item">🌻</button>
+        </div>
+    </div>
+
+    <!-- 遮罩层 -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- 隐藏的文件输入 -->
+    <input type="file" id="photoInput" accept="image/*" style="display: none;">
+    <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+
+    <script src="script.js"></script>
+</body>
+</html>
