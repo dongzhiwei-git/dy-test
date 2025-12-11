@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天界面演示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 42px;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            font-size: 18px;
+            margin-bottom: 48px;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+        
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        
+        .douyin-icon {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+        }
+        
+        .wechat-icon {
+            background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+        }
+        
+        .card-title {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        
+        .card-desc {
+            color: #666;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .card-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        
+        .card-features li {
+            padding: 8px 0;
+            color: #333;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .card-features li:before {
+            content: '✓';
+            color: white;
+            background: #07c160;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .douyin-card .card-features li:before {
+            background: #000000;
+        }
+        
+        .card-button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            color: white;
+        }
+        
+        .douyin-btn {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+        }
+        
+        .wechat-btn {
+            background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+        }
+        
+        .card-button:hover {
+            opacity: 0.9;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        
+        .info {
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .info h3 {
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+        
+        .info p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .emoji-line {
+            font-size: 28px;
+            margin: 16px 0;
+            letter-spacing: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 聊天界面克隆</h1>
+        <p class="subtitle">高度还原的抖音/微信聊天前端项目</p>
+        
+        <div class="cards">
+            <!-- 抖音卡片 -->
+            <a href="douyin.html" class="card douyin-card">
+                <div class="card-icon douyin-icon">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="white">
+                        <path d="M24 4C12.95 4 4 12.95 4 24C4 35.05 12.95 44 24 44C35.05 44 44 35.05 44 24C44 12.95 35.05 4 24 4ZM32 26L18 34V18L32 26Z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">
+                    抖音聊天
+                    <span class="badge">推荐</span>
+                </h2>
+                <p class="card-desc">完全还原抖音聊天界面，包含 iPhone Dynamic Island 状态栏</p>
+                <ul class="card-features">
+                    <li>iPhone 状态栏设计</li>
+                    <li>蓝色消息气泡</li>
+                    <li>快捷表情回复</li>
+                    <li>语音/图片/文字</li>
+                    <li>修改头像和名字</li>
+                </ul>
+                <button class="card-button douyin-btn">
+                    立即体验 →
+                </button>
+            </a>
+            
+            <!-- 微信卡片 -->
+            <a href="index.html" class="card wechat-card">
+                <div class="card-icon wechat-icon">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="white">
+                        <path d="M18 8C10.82 8 5 13.03 5 19.2C5 22.87 7.03 26.13 10.21 28.25L8.5 32.5L13.5 30C15.12 30.57 16.89 30.9 18.75 30.9C19.08 30.9 19.41 30.89 19.73 30.87C19.25 29.41 19 27.85 19 26.25C19 18.54 25.54 12.25 33.5 12.25C34.43 12.25 35.33 12.34 36.21 12.5C34.69 9.78 31.59 8 28 8H18Z"/>
+                        <path d="M43 26C43 20.48 38.18 16 32.25 16C26.32 16 21.5 20.48 21.5 26C21.5 31.52 26.32 36 32.25 36C33.63 36 34.94 35.75 36.15 35.3L40 37L38.75 33.5C41.28 31.75 43 29.06 43 26Z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">微信聊天</h2>
+                <p class="card-desc">经典微信聊天界面，绿色主题风格</p>
+                <ul class="card-features">
+                    <li>经典绿色气泡</li>
+                    <li>完整表情系统</li>
+                    <li>语音/图片/文字</li>
+                    <li>长按撤回消息</li>
+                    <li>智能自动回复</li>
+                </ul>
+                <button class="card-button wechat-btn">
+                    立即体验 →
+                </button>
+            </a>
+        </div>
+        
+        <div class="info">
+            <div class="emoji-line">💬 📱 🎨 ✨</div>
+            <h3>完整功能清单</h3>
+            <p>
+                支持发送文字、表情、图片、语音消息 | 
+                修改头像和名字 | 
+                长按撤回消息 | 
+                智能回复系统 | 
+                流畅动画效果 | 
+                响应式设计
+            </p>
+        </div>
+    </div>
+</body>
+</html>
