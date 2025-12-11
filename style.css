@@ -258,8 +258,8 @@ body {
 
 .quick-reactions {
     display: flex;
-    gap: 8px;
-    padding: 8px 12px;
+    gap: 6px;
+    padding: 10px 12px;
     overflow-x: auto;
     background: #ffffff;
     border-bottom: 1px solid #e5e5e5;
@@ -270,25 +270,34 @@ body {
 }
 
 .reaction-btn {
-    background: #f5f5f5;
+    background: #f7f7f7;
     border: none;
-    padding: 6px 12px;
-    border-radius: 16px;
+    padding: 5px 11px;
+    border-radius: 14px;
     font-size: 13px;
     white-space: nowrap;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.15s;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 400;
 }
 
 .reaction-btn:hover {
-    background: #e5e5e5;
+    background: #ebebeb;
+}
+
+.reaction-btn:active {
+    background: #d9d9d9;
 }
 
 /* 输入栏 */
 .input-bar {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
     padding: 8px 12px;
     background: #f5f5f5;
 }
@@ -296,17 +305,24 @@ body {
 .input-icon-btn {
     background: none;
     border: none;
-    padding: 8px;
+    padding: 6px;
     cursor: pointer;
-    color: #333;
+    color: #5A5A5A;
     display: flex;
     align-items: center;
     border-radius: 50%;
     transition: background 0.2s;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
 }
 
 .input-icon-btn:hover {
     background: #e5e5e5;
+}
+
+.input-icon-btn:active {
+    background: #d5d5d5;
 }
 
 .input-wrapper {
@@ -516,15 +532,23 @@ body {
 .emoji-item {
     background: none;
     border: none;
-    font-size: 28px;
-    padding: 8px;
+    font-size: 32px;
+    padding: 10px;
     cursor: pointer;
     border-radius: 8px;
     transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
 }
 
 .emoji-item:hover {
     background: #f5f5f5;
+}
+
+.emoji-item:active {
+    background: #ebebeb;
 }
 
 /* 遮罩层 */

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信聊天 - 使用说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "PingFang SC", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #07c160;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        .subtitle {
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        .icon {
+            width: 24px;
+            height: 24px;
+            background: #07c160;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #07c160;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(7, 193, 96, 0.3);
+        }
+        .btn:hover {
+            background: #06ad56;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(7, 193, 96, 0.4);
+        }
+        .emoji-demo {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            font-size: 32px;
+        }
+        .note {
+            background: #fff7e6;
+            border-left: 4px solid #faad14;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #595959;
+        }
+        .keyboard-shortcuts {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .keyboard-shortcuts h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 18px;
+        }
+        .shortcut {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        .key {
+            background: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            border: 1px solid #d9d9d9;
+            font-family: monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 微信聊天界面</h1>
+        <p class="subtitle">高度还原的微信聊天前端项目 - 完整功能版</p>
+        
+        <div class="emoji-demo">
+            <span>👋</span>
+            <span>🫰</span>
+            <span>👍</span>
+            <span>🤣</span>
+            <span>🌹</span>
+        </div>
+
+        <h2>✨ 核心功能</h2>
+        <ul class="feature-list">
+            <li>
+                <span class="icon">💬</span>
+                <span><strong>发送消息</strong> - 文字、表情、图片、语音全支持</span>
+            </li>
+            <li>
+                <span class="icon">🎭</span>
+                <span><strong>表情系统</strong> - 快捷表情栏 + 完整表情面板</span>
+            </li>
+            <li>
+                <span class="icon">🎤</span>
+                <span><strong>语音录制</strong> - 带计时器和波形动画效果</span>
+            </li>
+            <li>
+                <span class="icon">📷</span>
+                <span><strong>图片上传</strong> - 支持本地图片发送和预览</span>
+            </li>
+            <li>
+                <span class="icon">👤</span>
+                <span><strong>个性化</strong> - 修改头像和名字，实时更新</span>
+            </li>
+            <li>
+                <span class="icon">↩️</span>
+                <span><strong>撤回消息</strong> - 长按自己的消息即可撤回</span>
+            </li>
+            <li>
+                <span class="icon">🤖</span>
+                <span><strong>智能回复</strong> - 自动模拟对方回复，带输入中状态</span>
+            </li>
+        </ul>
+
+        <div class="note">
+            <strong>💡 提示：</strong> 所有图标和界面样式都经过精心调整，确保与微信原版高度一致。表情符号使用系统原生emoji，确保显示效果最佳。
+        </div>
+
+        <div class="keyboard-shortcuts">
+            <h3>⌨️ 快捷键</h3>
+            <div class="shortcut">
+                <span>发送消息</span>
+                <span class="key">Enter</span>
+            </div>
+            <div class="shortcut">
+                <span>关闭弹窗</span>
+                <span class="key">ESC</span>
+            </div>
+            <div class="shortcut">
+                <span>撤回消息</span>
+                <span class="key">长按 1秒</span>
+            </div>
+        </div>
+
+        <h2>🎮 使用方法</h2>
+        <ul class="feature-list">
+            <li>💬 在输入框输入文字，按 <strong>Enter</strong> 发送</li>
+            <li>😊 点击快捷表情按钮快速发送表情</li>
+            <li>😀 点击笑脸图标打开完整表情面板</li>
+            <li>🎤 点击麦克风图标录制语音消息</li>
+            <li>➕ 点击加号打开功能菜单</li>
+            <li>📷 在菜单中选择照片上传图片</li>
+            <li>👤 在菜单中修改对方头像或名字</li>
+        </ul>
+
+        <a href="index.html" class="btn">🚀 立即体验</a>
+        
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #f0f0f0; text-align: center; color: #999; font-size: 12px;">
+            <p>仅供学习和演示使用 | Made with ❤️</p>
+        </div>
+    </div>
+</body>
+</html>
