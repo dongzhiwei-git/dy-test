@@ -46,7 +46,7 @@ function adjustColor(color, amount) {
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
     initializeAvatars();
-    initializeEmojiPicker();
+    // initializeEmojiPicker();
     initializeEventListeners();
     updateStatusBarTime();
     scrollToBottom();
@@ -114,8 +114,9 @@ function initializeEventListeners() {
     // 表情快捷按钮
     document.querySelectorAll('.emoji-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-            const emoji = this.getAttribute('data-emoji');
-            sendMessage(emoji + ' ' + this.textContent.replace(emoji, '').trim());
+            // const emoji = this.getAttribute('data-emoji');
+            // sendMessage(emoji + ' ' + this.textContent.replace(emoji, '').trim());
+            sendMessage(this.textContent.trim());
         });
     });
 
@@ -210,9 +211,9 @@ function sendMessage(text) {
 
 // 插入表情
 function insertEmoji(emoji) {
-    const input = document.getElementById('messageInput');
-    input.value += emoji;
-    input.focus();
+    // const input = document.getElementById('messageInput');
+    // input.value += emoji;
+    // input.focus();
 }
 
 // 切换更多面板
