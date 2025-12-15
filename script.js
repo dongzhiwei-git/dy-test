@@ -140,6 +140,10 @@ function initializeEventListeners() {
 
     // 头像按钮
     document.getElementById('avatarBtn').addEventListener('click', () => {
+        if (currentUser === 'right') {
+            showNotification('右边的头像不能修改');
+            return;
+        }
         document.getElementById('avatarInput').click();
     });
 
@@ -158,6 +162,14 @@ function initializeEventListeners() {
     document.getElementById('chatAvatar').addEventListener('click', function() {
         document.getElementById('avatarInput').setAttribute('data-target', 'chat');
         document.getElementById('avatarInput').click();
+    });
+
+    // 顶部标题点击修改ID
+    document.querySelector('.chat-title').addEventListener('click', function() {
+        const newName = prompt('请输入新的名字', this.textContent);
+        if (newName) {
+            this.textContent = newName;
+        }
     });
 }
 
@@ -411,6 +423,11 @@ function handleAvatarChange(e) {
             });
             showNotification('聊天对象头像已更换');
         } else {
+            // Check if current user is right
+            if (currentUser === 'right') {
+                showNotification('右边的头像不能修改');
+                return;
+            }
             // 更换当前用户头像
             defaultAvatars[currentUser] = event.target.result;
             document.querySelectorAll(`.message-avatar[data-user="${currentUser}"]`).forEach(avatar => {
