@@ -204,7 +204,8 @@ body {
 
 .message.right {
     align-self: flex-end;
-    flex-direction: row-reverse;
+    /* flex-direction: row-reverse; - REMOVED: we want normal row order (content then avatar), but aligned to end */
+    justify-content: flex-end;
 }
 
 .message-avatar {
