@@ -178,17 +178,7 @@ body {
     margin: 24px 0;
 }
 
-.wave-emoji {
-    font-size: 72px;
-    animation: wave 1s ease-in-out;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
-}
-
-@keyframes wave {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-15deg); }
-    75% { transform: rotate(15deg); }
-}
+/* Removed wave animation styles */
 
 .system-text {
     background: rgba(0, 0, 0, 0.04);
@@ -272,13 +262,7 @@ body {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
-.wave-hand {
-    font-size: 56px;
-    margin: 12px;
-    display: block;
-    text-align: center;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
-}
+/* Removed wave-hand style */
 
 .recall-btn {
     background: rgba(0, 0, 0, 0.04);
